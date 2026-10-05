@@ -5,7 +5,7 @@
  * IDL can be found at `target/idl/pairproof.json`.
  */
 export type Pairproof = {
-  "address": "6XxZ4hSsYVp4c1VrTEo1RbAEhpoHxpCFT1yjUWH5Xias",
+  "address": "6KDQk3vW9vv7nArqkkKo1bveZSnmJ7gBXp6PwwhaE4UR",
   "metadata": {
     "name": "pairproof",
     "version": "0.1.0",

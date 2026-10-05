@@ -8,10 +8,10 @@ resolution = true
 skip-lint = false
 
 [programs.devnet]
-pairproof = "6XxZ4hSsYVp4c1VrTEo1RbAEhpoHxpCFT1yjUWH5Xias"
+pairproof = "6KDQk3vW9vv7nArqkkKo1bveZSnmJ7gBXp6PwwhaE4UR"
 
 [programs.localnet]
-pairproof = "6XxZ4hSsYVp4c1VrTEo1RbAEhpoHxpCFT1yjUWH5Xias"
+pairproof = "6KDQk3vW9vv7nArqkkKo1bveZSnmJ7gBXp6PwwhaE4UR"
 
 [provider]
 cluster = "devnet"

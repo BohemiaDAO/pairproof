@@ -10,7 +10,7 @@ pub use constants::*;
 pub use instructions::*;
 pub use state::*;
 
-declare_id!("6XxZ4hSsYVp4c1VrTEo1RbAEhpoHxpCFT1yjUWH5Xias");
+declare_id!("6KDQk3vW9vv7nArqkkKo1bveZSnmJ7gBXp6PwwhaE4UR");
 
 #[program]
 pub mod pairproof {
