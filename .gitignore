@@ -1,0 +1,30 @@
+.anchor
+.DS_Store
+target
+**/*.rs.bk
+node_modules
+test-ledger
+.yarn
+.surfpool
+
+# Secrets: never commit keys, env files or seed phrases
+*.json.key
+*-keypair.json
+id.json
+.env
+.env.*
+!.env.example
+*.pem
+*.seed
+*.mnemonic
+target/deploy/*.json
+!sdk/**/*.json
+!app/**/*.json
+
+# Node
+node_modules
+dist
+.vite
+*.log
+# Local demo keypairs
+.keys/

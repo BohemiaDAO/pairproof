@@ -1,0 +1,10 @@
+{
+  "name": "pairproof",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "sync-idl": "cp target/idl/pairproof.json sdk/src/idl/pairproof.json && cp target/types/pairproof.ts sdk/src/idl/pairproof.ts",
+    "test:sdk": "pnpm --filter @pairproof/sdk test",
+    "demo": "pnpm --filter @pairproof/scripts demo"
+  }
+}

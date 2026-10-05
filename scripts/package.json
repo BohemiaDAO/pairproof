@@ -1,0 +1,21 @@
+{
+  "name": "@pairproof/scripts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "demo": "tsx demo.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@pairproof/sdk": "workspace:*",
+    "@anchor-lang/core": "1.2.0",
+    "@solana/web3.js": "^1.99.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "~5.9.0"
+  }
+}

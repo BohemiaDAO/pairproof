@@ -1,0 +1,23 @@
+skip_local_validator = true
+
+[toolchain]
+anchor_version = "1.2.0"
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.devnet]
+pairproof = "6XxZ4hSsYVp4c1VrTEo1RbAEhpoHxpCFT1yjUWH5Xias"
+
+[programs.localnet]
+pairproof = "6XxZ4hSsYVp4c1VrTEo1RbAEhpoHxpCFT1yjUWH5Xias"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "cargo test"
+
+[hooks]

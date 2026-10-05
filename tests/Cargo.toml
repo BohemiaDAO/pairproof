@@ -1,0 +1,23 @@
+[package]
+name = "pairproof-tests"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+publish = false
+autotests = false
+
+[lib]
+path = "lib.rs"
+
+[[test]]
+name = "attestation"
+path = "attestation.rs"
+
+[dependencies]
+pairproof = { path = "../programs/pairproof", features = ["no-entrypoint"] }
+anchor-lang = "1.2.0"
+litesvm = "0.16"
+solana-message = "4.2"
+solana-transaction = "4.1"
+solana-signer = "3.0"
+solana-keypair = "3.1"
