@@ -40,6 +40,7 @@ export function App() {
   const [moment, setMoment] = React.useState<{ who: string; method: number; sig: string; k: number } | null>(null);
   const [revoke, setRevoke] = React.useState<Attestation | null>(null);
   const [dismissedTick, setDismissedTick] = React.useState(0);
+  const [prefill, setPrefill] = React.useState<{ a: string; b: string; n: number } | null>(null);
 
   React.useEffect(() => { window.scrollTo(0, 0); }, [screen]);
   React.useEffect(() => {
@@ -112,11 +113,11 @@ export function App() {
   const gateProps = { onConnectWallet: openPicker, onUseBurner: id.burnerAllowed ? () => id.setBurnerOn(true) : undefined };
 
   let body: React.ReactNode;
-  if (screen === "verify") body = <VerifyScreen mobile={mobile} />;
+  if (screen === "verify") body = <VerifyScreen mobile={mobile} prefill={prefill} />;
   else if (!me) body = <ConnectScreen mobile={mobile} me={null} burner={false} lowSol={false} proposing={false} onPropose={async () => false} {...gateProps} />;
   else if (screen === "requests") body = <RequestsScreen mobile={mobile} me={me} incoming={incoming} outgoing={chain.outgoing} tab={tab} setTab={setTab} busyId={busyId}
     onConfirm={onConfirm} onIgnore={(p) => { dismiss(p.address.toBase58()); setDismissedTick((t) => t + 1); }} onCancel={onCancel} goConnect={() => setScreen("connect")} />;
-  else if (screen === "connections") body = <ConnectionsScreen mobile={mobile} me={me} connections={chain.connections} busyId={busyId} onRevoke={setRevoke} goConnect={() => setScreen("connect")} />;
+  else if (screen === "connections") body = <ConnectionsScreen mobile={mobile} me={me} connections={chain.connections} busyId={busyId} onRevoke={setRevoke} onVerify={(other) => { setPrefill({ a: me.toBase58(), b: other, n: Date.now() }); setScreen("verify"); }} goConnect={() => setScreen("connect")} />;
   else body = <ConnectScreen mobile={mobile} me={me.toBase58()} burner={id.mode === "burner"} lowSol={lowSol} proposing={proposing} onPropose={onPropose} {...gateProps} />;
 
   return (

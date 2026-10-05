@@ -1,7 +1,8 @@
 import * as React from "react";
 import { PublicKey } from "@solana/web3.js";
 import { findAttestationPda, getAttestation, METHOD_LABELS, type Attestation } from "@pairproof/sdk";
-import { PpAddressChip, PpAddressInput, PpButton, PpCard, PpMark, isSolanaAddress } from "../components/ui";
+import { AddressField } from "../components/AddressField";
+import { PpAddressChip, PpButton, PpCard, PpMark, isSolanaAddress } from "../components/ui";
 import { PageTitle } from "../components/shell";
 import { useIdentity } from "../lib/identity";
 import { config, explorerAddress } from "../lib/config";
@@ -19,12 +20,13 @@ function KV({ k, v }: { k: string; v: React.ReactNode }) {
   );
 }
 
-export function VerifyScreen({ mobile }: { mobile: boolean }) {
+export function VerifyScreen({ mobile, prefill }: { mobile: boolean; prefill?: { a: string; b: string; n: number } | null }) {
   const { connection } = useIdentity();
   const [a, setA] = React.useState("");
   const [b, setB] = React.useState("");
   const [result, setResult] = React.useState<Result>(null);
   const [busy, setBusy] = React.useState(false);
+  React.useEffect(() => { if (prefill) { setA(prefill.a); setB(prefill.b); setResult(null); } }, [prefill]);
   const ta = a.trim(), tb = b.trim();
   const ok = isSolanaAddress(ta) && isSolanaAddress(tb) && ta !== tb;
   const same = !!ta && ta === tb;
@@ -45,8 +47,8 @@ export function VerifyScreen({ mobile }: { mobile: boolean }) {
     <div style={{ display: "flex", flexDirection: "column", gap: mobile ? 20 : 24 }}>
       <PageTitle mobile={mobile} title="Verify a connection" sub="Check whether two addresses confirmed they met. Anyone can check, no wallet needed." />
       <PpCard padding={mobile ? 20 : 24}>
-        <PpAddressInput label="First address" value={a} onChange={(v) => { setA(v); setResult(null); }} hint="Paste a Solana address." />
-        <PpAddressInput label="Second address" value={b} onChange={(v) => { setB(v); setResult(null); }} error={same ? "Enter two different addresses." : undefined} hint="Paste a Solana address." />
+        <AddressField label="First address" value={a} onChange={(v) => { setA(v); setResult(null); }} hint="Paste a Solana address." />
+        <AddressField label="Second address" value={b} onChange={(v) => { setB(v); setResult(null); }} error={same ? "Enter two different addresses." : undefined} hint="Paste a Solana address." />
         <PpButton full size="lg" disabled={!ok} loading={busy} onClick={run}>{busy ? "Checking…" : "Verify"}</PpButton>
       </PpCard>
       {result?.kind === "yes" && (

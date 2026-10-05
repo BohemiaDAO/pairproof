@@ -1,6 +1,8 @@
+import * as React from "react";
 import { counterpartyOf, type Attestation } from "@pairproof/sdk";
 import { PublicKey } from "@solana/web3.js";
-import { PpAddressChip, PpButton, PpCard, PpEmptyState, PpListRow, PpStatusPill } from "../components/ui";
+import { PpAddressChip, PpButton, PpCard, PpEmptyState, PpListRow, PpSegmented, PpStatusPill } from "../components/ui";
+import { NetworkGraph } from "../components/NetworkGraph";
 import { MethodBadge, PageTitle } from "../components/shell";
 import { explorerAddress, config } from "../lib/config";
 import { formatDate } from "../lib/format";
@@ -11,10 +13,12 @@ interface Props {
   connections: Attestation[];
   busyId: string | null;
   onRevoke: (a: Attestation) => void;
+  onVerify: (other: string) => void;
   goConnect: () => void;
 }
 
-export function ConnectionsScreen({ mobile, me, connections, busyId, onRevoke, goConnect }: Props) {
+export function ConnectionsScreen({ mobile, me, connections, busyId, onRevoke, onVerify, goConnect }: Props) {
+  const [view, setView] = React.useState<"list" | "graph">("list");
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: mobile ? 20 : 24 }}>
       <PageTitle mobile={mobile} title="My connections" sub={connections.length ? "People who confirmed they met you. Public and pseudonymous." : undefined}
@@ -26,6 +30,9 @@ export function ConnectionsScreen({ mobile, me, connections, busyId, onRevoke, g
           body="Meet someone, show them your code, and propose a connection. Once they confirm with their signature, it shows up here."
           action={<PpButton size="lg" onClick={goConnect}>Show my code</PpButton>} />
       ) : (
+        <>
+        <PpSegmented size="sm" value={view} onChange={(v) => setView(v as "list" | "graph")} options={[{ value: "list", label: "List" }, { value: "graph", label: "Network" }]} />
+        {view === "graph" ? <NetworkGraph me={me} connections={connections} onVerify={onVerify} /> :
         <PpCard padding={0} style={{ gap: 0, overflow: "hidden" }}>
           {connections.map((a, i) => {
             const id = a.address.toBase58();
@@ -39,7 +46,8 @@ export function ConnectionsScreen({ mobile, me, connections, busyId, onRevoke, g
                 actions={<PpButton variant="quiet" size={mobile ? "md" : "sm"} loading={busyId === id} onClick={() => onRevoke(a)}>Revoke</PpButton>} />
             );
           })}
-        </PpCard>
+        </PpCard>}
+        </>
       )}
     </div>
   );

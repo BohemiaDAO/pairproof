@@ -1,5 +1,6 @@
 import * as React from "react";
-import { PpAddressInput, PpBanner, PpButton, PpCard, PpEmptyState, PpQRCard, PpSegmented, PpSelect, PpTextInput, isSolanaAddress, shortAddress, PpAddressChip } from "../components/ui";
+import { AddressField } from "../components/AddressField";
+import { PpBanner, PpButton, PpCard, PpEmptyState, PpQRCard, PpSegmented, PpSelect, PpTextInput, isSolanaAddress, shortAddress, PpAddressChip } from "../components/ui";
 import { PageTitle } from "../components/shell";
 import { config } from "../lib/config";
 
@@ -44,7 +45,7 @@ export function ConnectScreen({ mobile, me, burner, lowSol, proposing, onPropose
 
   const form = (
     <PpCard title="Propose a connection" padding={mobile ? 20 : 24}>
-      <PpAddressInput value={addr} onChange={setAddr} error={selfErr} />
+      <AddressField value={addr} onChange={setAddr} error={selfErr} />
       <PpSegmented full label="How did you meet?" value={method} onChange={setMethod} options={[
         { value: "0", label: "In person" }, { value: "1", label: "Video call" }, { value: "2", label: "Vouch" }]} />
       <PpTextInput label="Context" optional="(optional)" placeholder="e.g. Breakpoint 2026" value={ctx} onChange={setCtx} hint="Only a hash of this text goes on-chain. The words stay with you." />
