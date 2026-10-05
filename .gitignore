@@ -28,3 +28,6 @@ dist
 *.log
 # Local demo keypairs
 .keys/
+
+# Design export (large, not part of the source)
+Pairproof System*.html

@@ -13,6 +13,7 @@ import {
   findAttestationPda,
   findProposalPda,
   parseProgramError,
+  describeError,
   sha256Context,
   sortPair,
 } from "../src";
@@ -86,4 +87,11 @@ test("context hashing", () => {
   assert.equal(sha256Context("met at the conf").length, 32);
   assert.deepEqual(sha256Context("a"), sha256Context(" a "));
   assert.ok(new PublicKey(IDL.address));
+});
+
+test("describeError gives readable text for framework and custom errors", () => {
+  const fw = { message: "failed", logs: ["Program log: AnchorError caused by account: proposal. Error Code: AccountNotInitialized. Error Number: 3012. Error Message: The program expected this account to be already initialized."] };
+  assert.match(describeError(fw), /no longer exists/);
+  assert.equal(describeError(new Error("custom program error: 0x1779")), "Only one of the two connected wallets can revoke this connection");
+  assert.match(describeError(new Error("User rejected the request.")), /rejected in the wallet/);
 });

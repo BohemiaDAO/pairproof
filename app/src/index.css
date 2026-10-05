@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* Design tokens live in styles/tokens.css (--pp-*). Expose a few to Tailwind utilities. */
+@theme inline {
+  --color-bg: var(--pp-bg);
+  --color-surface: var(--pp-surface);
+  --color-ink: var(--pp-text);
+  --color-accent: var(--pp-accent);
+  --font-display: var(--pp-font-display);
+  --font-sans: var(--pp-font-body);
+  --font-mono: var(--pp-font-mono);
+}
+
+html, body, #root { min-height: 100%; }
+body {
+  margin: 0;
+  background: var(--pp-bg);
+  color: var(--pp-text);
+  font-family: var(--pp-font-body);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+a { color: var(--pp-link); text-underline-offset: 2px; }
+a:hover { color: var(--pp-link-hover); }
+:focus-visible { outline: none; box-shadow: var(--pp-ring); border-radius: 8px; }
+/* Inputs draw their own focus ring on the wrapping field; don't double it. */
+input:focus-visible, select:focus-visible { box-shadow: none; }

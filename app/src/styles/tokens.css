@@ -1,0 +1,230 @@
+/* Pairproof design tokens (from the Pairproof design system). */
+:root{
+  /* Brand */
+  --pp-ink:#1A1714;
+  --pp-paper:#F7F3EC;
+  --pp-yellow:#FFC400;
+  --pp-violet:#7916F3;
+
+  /* Violet ramp */
+  --pp-violet-50:#F5EEFE;
+  --pp-violet-100:#EBDDFD;
+  --pp-violet-200:#D5B8FB;
+  --pp-violet-300:#B98AF8;
+  --pp-violet-400:#9B52F6;
+  --pp-violet-500:#7916F3;
+  --pp-violet-600:#6510D2;
+  --pp-violet-700:#520CAB;
+  --pp-violet-800:#3B0880;
+  --pp-violet-900:#251047;
+
+  /* Warm neutrals (Ink → Paper) */
+  --pp-grey-950:#141210;
+  --pp-grey-900:#1A1714;
+  --pp-grey-850:#24201C;
+  --pp-grey-800:#2E2924;
+  --pp-grey-700:#3A342E;
+  --pp-grey-600:#5E5750;
+  --pp-grey-500:#6B635B;
+  --pp-grey-400:#A69C90;
+  --pp-grey-300:#C9C0B4;
+  --pp-grey-200:#E4DCCF;
+  --pp-grey-150:#EDE6DA;
+  --pp-grey-100:#F2ECE2;
+  --pp-grey-50:#F7F3EC;
+  --pp-white:#FFFFFF;
+
+  /* Yellow (fill only, always with Ink text) */
+  --pp-yellow-500:#FFC400;
+  --pp-yellow-200:#FFE59A;
+  --pp-yellow-100:#FFF3CC;
+
+  /* Semantic hues */
+  --pp-green-700:#17603C;
+  --pp-green-600:#1F7A4D;
+  --pp-green-300:#6FCF97;
+  --pp-green-100:#E2F2E7;
+  --pp-green-900:#132B1D;
+  --pp-amber-700:#8F4106;
+  --pp-amber-600:#A14A06;
+  --pp-amber-300:#F2A65A;
+  --pp-amber-100:#FCEBD8;
+  --pp-amber-900:#33220F;
+  --pp-red-700:#9E1D24;
+  --pp-red-600:#C0262D;
+  --pp-red-300:#FF8A80;
+  --pp-red-100:#FBE4E1;
+  --pp-red-900:#3A1715;
+
+  /* Semantic — light theme */
+  --pp-bg:var(--pp-grey-50);
+  --pp-surface:var(--pp-white);
+  --pp-surface-sunken:var(--pp-grey-100);
+  --pp-surface-hover:var(--pp-grey-100);
+  --pp-surface-inverse:var(--pp-grey-900);
+  --pp-overlay:rgba(26,23,20,.48);
+
+  --pp-text:var(--pp-grey-900);
+  --pp-text-2:var(--pp-grey-600);
+  --pp-text-3:var(--pp-grey-500);
+  --pp-text-disabled:var(--pp-grey-400);
+  --pp-text-inverse:var(--pp-grey-50);
+  --pp-text-on-accent:var(--pp-white);
+  --pp-text-on-yellow:var(--pp-grey-900);
+
+  --pp-border-subtle:var(--pp-grey-150);
+  --pp-border:var(--pp-grey-200);
+  --pp-border-input:var(--pp-grey-300);
+  --pp-border-strong:var(--pp-grey-900);
+
+  --pp-accent:var(--pp-violet-500);
+  --pp-accent-hover:var(--pp-violet-600);
+  --pp-accent-pressed:var(--pp-violet-700);
+  --pp-accent-soft:var(--pp-violet-50);
+  --pp-accent-soft-hover:var(--pp-violet-100);
+  --pp-accent-soft-text:var(--pp-violet-700);
+  --pp-accent-border:var(--pp-violet-200);
+  --pp-link:var(--pp-violet-500);
+  --pp-link-hover:var(--pp-violet-700);
+  --pp-focus:var(--pp-violet-500);
+  --pp-mark-accent:var(--pp-violet-500);
+
+  --pp-highlight:var(--pp-yellow-500);
+  --pp-highlight-soft:var(--pp-yellow-100);
+
+  --pp-success:var(--pp-green-600);
+  --pp-success-text:var(--pp-green-700);
+  --pp-success-soft:var(--pp-green-100);
+  --pp-warning:var(--pp-amber-600);
+  --pp-warning-text:var(--pp-amber-700);
+  --pp-warning-soft:var(--pp-amber-100);
+  --pp-error:var(--pp-red-600);
+  --pp-error-text:var(--pp-red-700);
+  --pp-error-soft:var(--pp-red-100);
+  --pp-danger:var(--pp-red-600);
+  --pp-danger-hover:var(--pp-red-700);
+  --pp-text-on-danger:var(--pp-white);
+  --pp-disabled-bg:var(--pp-grey-150);
+
+  /* Type — Unbounded 800 display, Inter UI, JetBrains Mono for addresses */
+  --pp-font-display:"Unbounded",system-ui,sans-serif;
+  --pp-font-body:"Inter",system-ui,-apple-system,sans-serif;
+  --pp-font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --pp-type-display:800 48px/1.05 var(--pp-font-display);
+  --pp-type-display-mobile:800 36px/1.08 var(--pp-font-display);
+  --pp-type-h1:800 32px/1.12 var(--pp-font-display);
+  --pp-type-h1-mobile:800 26px/1.15 var(--pp-font-display);
+  --pp-type-h2:800 22px/1.2 var(--pp-font-display);
+  --pp-type-h3:600 18px/1.35 var(--pp-font-body);
+  --pp-type-number:800 40px/1 var(--pp-font-display);
+  --pp-type-body:400 16px/1.5 var(--pp-font-body);
+  --pp-type-body-strong:600 16px/1.5 var(--pp-font-body);
+  --pp-type-small:400 14px/1.45 var(--pp-font-body);
+  --pp-type-label:600 14px/1.3 var(--pp-font-body);
+  --pp-type-caption:500 12px/1.35 var(--pp-font-body);
+  --pp-type-eyebrow:600 12px/1.2 var(--pp-font-body);
+  --pp-tracking-eyebrow:.1em;
+  --pp-type-mono:500 14px/1.4 var(--pp-font-mono);
+  --pp-type-mono-sm:500 12px/1.4 var(--pp-font-mono);
+
+  /* Spacing — 4px scale */
+  --pp-space-0:0px;
+  --pp-space-1:4px;
+  --pp-space-2:8px;
+  --pp-space-3:12px;
+  --pp-space-4:16px;
+  --pp-space-5:20px;
+  --pp-space-6:24px;
+  --pp-space-8:32px;
+  --pp-space-10:40px;
+  --pp-space-12:48px;
+  --pp-space-16:64px;
+
+  /* Radii */
+  --pp-radius-xs:8px;
+  --pp-radius-sm:12px;
+  --pp-radius-md:16px;
+  --pp-radius-lg:20px;
+  --pp-radius-xl:28px;
+  --pp-radius-pill:999px;
+
+  /* Controls & layout */
+  --pp-control-sm:40px;
+  --pp-control-md:48px;
+  --pp-control-lg:56px;
+  --pp-hit-min:48px;
+  --pp-input-h:52px;
+  --pp-max-w:720px;
+  --pp-gutter:20px;
+  --pp-header-h:72px;
+  --pp-tabbar-h:72px;
+
+  /* Elevation — borders first; shadow only for floating layers */
+  --pp-shadow-float:0 12px 32px rgba(26,23,20,.16);
+  --pp-ring:0 0 0 2px var(--pp-bg),0 0 0 4px var(--pp-focus);
+
+  /* Motion — short and calm; one special "join" */
+  --pp-ease:cubic-bezier(.22,1,.36,1);
+  --pp-ease-join:cubic-bezier(.34,1.25,.5,1);
+  --pp-dur-1:120ms;
+  --pp-dur-2:200ms;
+  --pp-dur-3:320ms;
+  --pp-dur-join:900ms;
+}
+
+[data-pp-theme="dark"]{
+  --pp-bg:var(--pp-grey-900);
+  --pp-surface:var(--pp-grey-850);
+  --pp-surface-sunken:var(--pp-grey-950);
+  --pp-surface-hover:var(--pp-grey-800);
+  --pp-surface-inverse:var(--pp-grey-50);
+  --pp-overlay:rgba(10,9,8,.66);
+
+  --pp-text:var(--pp-grey-50);
+  --pp-text-2:var(--pp-grey-300);
+  --pp-text-3:var(--pp-grey-400);
+  --pp-text-disabled:var(--pp-grey-600);
+  --pp-text-inverse:var(--pp-grey-900);
+
+  --pp-border-subtle:var(--pp-grey-800);
+  --pp-border:var(--pp-grey-700);
+  --pp-border-input:var(--pp-grey-600);
+  --pp-border-strong:var(--pp-grey-50);
+
+  --pp-accent-soft:var(--pp-violet-900);
+  --pp-accent-soft-hover:var(--pp-violet-800);
+  --pp-accent-soft-text:var(--pp-violet-200);
+  --pp-accent-border:var(--pp-violet-800);
+  --pp-link:var(--pp-violet-300);
+  --pp-link-hover:var(--pp-violet-200);
+  --pp-focus:var(--pp-violet-300);
+  --pp-mark-accent:var(--pp-violet-400);
+
+  --pp-highlight-soft:var(--pp-amber-900);
+
+  --pp-success:var(--pp-green-300);
+  --pp-success-text:var(--pp-green-300);
+  --pp-success-soft:var(--pp-green-900);
+  --pp-warning:var(--pp-amber-300);
+  --pp-warning-text:var(--pp-amber-300);
+  --pp-warning-soft:var(--pp-amber-900);
+  --pp-error:var(--pp-red-300);
+  --pp-error-text:var(--pp-red-300);
+  --pp-error-soft:var(--pp-red-900);
+  --pp-disabled-bg:var(--pp-grey-800);
+
+  --pp-shadow-float:0 12px 32px rgba(0,0,0,.4);
+}
+
+/* Pairproof motion keyframes (cannot be inline). Respect reduced motion. */
+@keyframes pp-spin{to{transform:rotate(360deg)}}
+@keyframes pp-fade-up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes pp-fade{from{opacity:0}to{opacity:1}}
+@keyframes pp-pulse-dot{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes pp-join-left{0%{opacity:0;transform:translateX(-34px)}60%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes pp-join-right{0%{opacity:0;transform:translateX(34px)}60%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes pp-join-glow{0%{opacity:0;transform:scale(.6)}55%{opacity:0}75%{opacity:1}100%{opacity:0;transform:scale(1.35)}}
+@keyframes pp-sheet-up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important}
+}

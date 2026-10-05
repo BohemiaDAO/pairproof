@@ -40,10 +40,23 @@ export function parseProgramError(err: unknown): ProgramError | undefined {
   return undefined;
 }
 
+function collectText(err: unknown): string {
+  const e = err as { message?: string; logs?: string[]; transactionLogs?: string[] };
+  return [e?.message, ...(e?.logs ?? []), ...(e?.transactionLogs ?? [])].filter(Boolean).join("\n");
+}
+
 /** Human-readable message for any thrown error. */
 export function describeError(err: unknown): string {
   const pe = parseProgramError(err);
   if (pe) return pe.message;
+  const text = collectText(err);
+  // Anchor framework errors (e.g. account not initialized) carry their own readable message.
+  const framework = /Error Code: (\w+)\. Error Number: \d+\. Error Message: ([^\n]*?)\.?(?:\n|"|$)/.exec(text);
+  if (framework) {
+    if (framework[1] === "AccountNotInitialized") return "That request no longer exists. It may have been confirmed, cancelled or expired.";
+    return framework[2];
+  }
+  if (/already in use/i.test(text)) return "A connection or request between these two wallets already exists.";
   const msg = (err as { message?: string })?.message ?? String(err);
   if (/insufficient (funds|lamports)|0x1\b/i.test(msg)) return "Not enough SOL to pay for this transaction.";
   if (/User rejected|rejected the request/i.test(msg)) return "Request rejected in the wallet.";
